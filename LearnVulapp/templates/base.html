@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Work+Sans:400,600">
+  <link rel="stylesheet" type="text/css" href="{% static "main.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "comment.css" %}">
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo"></h1>
+      <img src="{% static "logo.png" %}" alt="logo" class="logo" width="150">
+      <!--NavBar kkısmı-->
+      
+      {%if user.is_authenticated %}    
+       <nav>
+         <ul>
+     <!--    <li><a href="{% url 'home'%}">Home</a></li> -->
+        <li><a href="{% url 'feed'%}">Home</a></li>
+        <li><a href="{% url 'searchbar'%}">Search</a></li>
+        <li><a href="{% url 'contact'%}">Contact</a></li>
+        
+        
+          <!--
+          <li><a href="#">Post</a></li>
+          <li><a href="#">User</a></li>
+          <li><a href="#">Logout</a></li>
+         </ul>
+         -->
+       </nav>
+      {%else%}
+      <nav>
+      <ul>
+        <!--<li><a href="{% url 'home'%}">Home</a></li>-->
+        <li><a href="{% url 'searchbar'%}">Search</a></li>
+        <!--<li><a href="#">About</a></li>
+        <li><a href ="#">Login</a></li> 
+      </ul>-->
+      </nav>
+      {% endif %}
+         
+
+    </div>
+  </header>
+  <br><br>
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>

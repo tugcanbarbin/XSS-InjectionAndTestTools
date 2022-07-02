@@ -1,0 +1,41 @@
+{% extends 'base.html' %}{% block content %}
+{%load static%}
+<form class="search_form" action="" method="get"  >
+    <input style='width:400px;margin-left:50px' class="search-box" type="text" name="search" placeholder="Book Title/ Author ...">
+    <button type="submit">Search</button>
+</form>
+
+
+<!--<h1>  Results for:{{search|safe}}</h1> Burada search parametresi safe optionı ile kullanildigi icin bu input noktası olasi bir XSS zaafiyet noktasidir.-->
+
+<center>
+    <div class='comment-box'>
+<p>You Searched For: </p>
+<p id="result"></p>
+</div>
+{%if answ %}
+
+{%for i in answ %}
+<div class='comment-box'>
+<br>
+<a href="{% url 'book_detail' i.pk%}"> Title: {{i.title}}</a>
+<br><br>
+</div>
+{% endfor %}
+
+{%else%}
+{%endif%}
+
+
+</center>
+<!--To prevent possible XSS attacks please comment line 34 and uncomment line 35-->
+<script type="text/javascript">
+	//var MyValue = document.getElementById('searched').value;
+	var x = '{{search|safe}}';
+	//var x = '{{search}}';
+	//document.write(x);
+	document.getElementById("result").innerHTML = x;
+	//document.getElementById("result").value = x;
+</script>
+
+{%endblock content%}

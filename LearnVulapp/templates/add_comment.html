@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% block content %}
+
+<center>
+<h1>Add Comment...</h1>
+<div class="form-group">
+   
+        <form class="search_form" action="" method="post">
+            <!--<input type="text" name="nickname" placeholder="Nickname">
+            <input type="text" name = "body" placeholder="Comment Here">
+            <button type="submit">Comment</button>
+            -->
+            {% csrf_token %}
+            {{ form }}
+            <center>
+            <button type="submit" > Comment</button>
+            </center>   
+        </form>
+        <!--{{form.as_p}}-->
+   
+
+
+{%endblock content%}

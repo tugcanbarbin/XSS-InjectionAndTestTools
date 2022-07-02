@@ -1,0 +1,11 @@
+<!--To prevent possible XSS attack please comment line 6 and uncomment the line 7-->
+
+{% extends 'base.html' %} 
+{% load static %}
+{%block content%}
+<input type="text" placeholder="Type " id="inputId" value="{{name}}"><!--This line is vulnerable to possible XSS attacks-->
+<!--<input ype="text" placeholder="Type " id="inputId" value="{{name}}"--><!--This line is NOT vulnerable to  XSS attacks it is prevented by default django special character escaping-->
+<!--<input type="text" placeholder="Type " id="inputId" value="{{name|safe|striptags}}">--><!--This line is NOT vulnerable to  XSS attacks it is prevented by using striptags which will encode special chars if used-->
+<h1>Thank you for your suggest</h1>
+
+{%endblock content%}

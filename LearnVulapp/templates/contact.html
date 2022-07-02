@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{%load static%}{% block content %}
+
+<h2>You can contact us to suggest a topic</h2>
+
+<form action= contact_result method = GET>
+    <p>Nickname: <input name=uname ></p>
+    <p>Topic: <input name=topic></p>
+    <button type=submit>Submit</button>
+</form>
+{%endblock content%}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}{% block content %}
+{%load static%}
+
+
+
+
+<center>
+{%if answ %}
+<div class='comment-box'>
+    <h1>OPEN MINDED BLOG</h1>
+    <h2>This blog is an open minded blog to share your opinios about our daily topics anonymusly. Please be respectful while sharing your opinions.</h2>
+{%for i in answ %}
+<br>
+<!--<a><h1>Title: {{i.title|safe}}</h1></a>-->
+<a href="{% url 'book_detail' i.pk%}">Title: {{i.title}}</a>
+<br>
+{% endfor %}
+</div>
+{%else%}
+{%endif%}
+
+</center>
+
+{%endblock content%}

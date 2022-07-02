@@ -1,0 +1,60 @@
+{% extends 'base.html' %}{% block content %}
+
+<center>
+<div id="XSS"  class='comment-box'>
+
+    <h1>XSS</h1>
+        <p>
+        XSS (Cross-Site Scripting) is a vulnerability that allows an attacker to run script languages such as JavaScript in victims’ browser.
+         It arises in different contexts according to where the vulnerable web application uses the user input and the main reason behind it 
+         is the usage of  user input without any security control. An attacker could perform malicious actions such as stealing user credentials,
+         getting users’s clipboard, key tab or screenshots, changing the content of the current web application or performing a phishing attack by
+        performing XSS.  XSS is divided into three main categories as reflected, stored and DOM based.	
+        </p>
+    </div>
+    <br>
+    <div id="XXE"  class='comment-box'>
+    <h1>XXE</h1>
+        <p>
+        XXE ( XML External Entity) injection is a vulnerability that triggered by calling custom XML external entities defined by attacker, 
+        while XML parser of the application parses the XML data. (In terms of clarity, XML(Extensible Markup Language) is a a markup language 
+        to store or transport the data between servers which could use different languages.) .By performing XXE injection and attacker can view
+        files on the application server filesystem or can create an attack surface to perform SSRF attack. XML external entities are custom entities 
+        that their definitions are located outside of DTD ( DTD (Document Type Definition) is used to define structure and legal elements, attributes of an XML document.).   	
+        </p>
+    </div>
+    <br>
+    <div id="SSRF"  class='comment-box'>
+    <h1>SSRF</h1>
+        <p>
+        SSRF (Server-Side Request Forgery) is a vulnerability that allows an attacker to enforce the web application server to make http request to a URL
+         that chosen by him/herself.  As it can be understandable by its name, the case point is the forgery of the request that is done by web application server. 
+         The server of the application can have different features which makes request to external resources, 3rd party APIs or Internal services includes 
+         cloud-server meta-data, files and database HTTP interfaces that are not exposed to internet for reading, importing or publishing data. From the attacker point 
+         of view, the case is abusing the functionalities where the application server acts as client by making requests. By abusing these functionalities the application 
+         server becomes as a proxy for the attacker. The SSRF can be observed in two title such as Basic SSRF and Blind SSRF. In basic SSRF the application take the user input 
+         (URL/URI) and make a request without validating it then show the coming response from the given URL, in Blind SSRF the application does not show the coming response 
+         from the given URL, but it can end up with rce (remote code execution) in back-end components   	
+        </p>
+    </div>
+    <br>
+    <div id="PathTraversal"  class='comment-box'>
+    <h1>Path Traversal</h1>
+        <p>
+        Path Traversal, as known as Directory Traversal, Directory Climbing, Dot-dot-slash arises when the user input is used in accessing to files or directories without 
+        any control, the default structure is vulnerable. Path traversal attack aims to reach directories that contains sensitive data such as usernames and passwords of 
+        database and operating system, source codes and configuration files of the application. The target of the attack can be observed in two categories as intended to 
+        application and to operating system. To perform the attack ..\ character sequence in Windows and ../ character sequence in Linux are used (because of the APIs used 
+        in Windows sometimes it can also be performed with ../ character sequence.).  Before starting the attack, first the detection of the vulnerable input points should 
+        be done. Mostly the parameters used like page, view, path, url, filename or the input points that calls files with extensions like .txt, .doc are considered as suspicious 
+        points. After finding the attack vector, different payloads trials should be made, ../ is used to step up one level in the directory and ../../../ used to step up to file 
+        system root directory but according to the depth of the subfolders the number of ../ character sequence can be changed. There are other payloads for different scenarios for 
+        example when the traversal sequences ( ../) are stripped by web application the payload should be as ….// since the 3th and 4th dots and the first slash will be stripped; 
+        another scenario when there is validation of the file extension, if web application wants the file extension of file attacker should write a null byte between the payload 
+        and the extension such as ../../../etc/passwd%00.png ; or if the web application strips traversal sequence and performs URL-decode, payload must be as 
+        ..%252F.. %252F.. %252Fetc/passwd 	
+        </p>
+    </div>
+</center>
+
+{% endblock %}
